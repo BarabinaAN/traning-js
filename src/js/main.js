@@ -1,26 +1,21 @@
 'use strict'
 
-let money = +prompt('Ваш бюджет на месяц?', ''),
-    time = prompt('Введите дату в формате YYYY-MM-DD', ''),
-    requiredState = prompt('Введите обязательную статью расходов в этом месяце', ''),
-    howMuch = prompt('Во сколько обойдется?', '');
+let num = '33721';
 
-let appData = {
-    moneyDate: money,
-    timeData: time,
-    expenses: {},
-    optionalExpenses: {},
-    income: [],
-    savings: false      
-};   
+let arr = num.split('');
 
-appData.expenses[requiredState] = howMuch;
+let summ = 1;
 
-requiredState = prompt('Введите обязательную статью расходов в этом месяце', ''),
-howMuch = prompt('Во сколько обойдется?', '');
+function multNumber() {
+    for (var i = 0; i < arr.length; i++) {
+        var item = +arr[i];
+        summ = summ * item;
+    }
+    return summ;
+};
+multNumber();
 
-appData.expenses[requiredState] = howMuch;
+console.log(summ);
 
-alert('Бютжет на 1 день - ' + '' + appData.moneyDate/30);
-
-console.log(appData);
+summ = summ**3;
+alert( String(summ).slice(0, 2) );
