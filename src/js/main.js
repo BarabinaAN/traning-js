@@ -19,3 +19,4 @@ console.log(summ);
 
 summ = summ**3;
 alert( String(summ).slice(0, 2) );
+
