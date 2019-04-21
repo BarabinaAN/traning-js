@@ -1,22 +1,38 @@
-'use strict'
+'use strict';
 
-let num = '33721';
+let week = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday'
+];
 
-let arr = num.split('');
-
-let summ = 1;
-
-function multNumber() {
-    for (var i = 0; i < arr.length; i++) {
-        var item = +arr[i];
-        summ = summ * item;
+for ( let i = 0; i < week.length; i++ ) {
+    if (i > 4){
+        document.write('<b>'+ week[i] + '</b>' + '</br>'); 
+    } else if (i == 1){
+        document.write('<i>' + week[i] + '</i>' + '</br>');
+    } else {
+        document.write(week[i] + '</br>');
     }
-    return summ;
-};
-multNumber();
+}
 
-console.log(summ);
+let arr = [
+    456,
+    7864,
+    2348,
+    3649,
+    7913456,
+    45087,
+    3059
+];
 
-summ = summ**3;
-alert( String(summ).slice(0, 2) );
-
+for ( let i = 0; i < arr.length; i++ ) {
+        let compareValue = String(arr[i]);
+        if (compareValue[0] == '3' || compareValue[0] == '7') {
+          console.log( compareValue );  
+        }
+}
