@@ -72,19 +72,33 @@ function main() {
         },
         chooseIncome: function() {
             let items;
-            while(items == null || typeof(items) !== 'string' || items == '') {
+
+            while (items == null || typeof(items) !== 'string' || items == '') {
                 items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-                appData.income = items.split(', ');
-                appData.income.push(prompt('Может что-то еще?', ''));
+            }
+            
+            if (items !== undefined){
+                let anything = prompt('Может что-то еще?', '');
+                
+                if (anything != '') {
+                    appData.income.push(anything);
+                }
+
+                appData.income = items.split(', ');        
                 appData.income.sort();
+                appData.income.forEach(function(item, i, arrIncome) {
+                    i++;
+                    alert('Способы доп. заработка: ' + i + ' - ' + item);
+                });
             }
         }
-    }; 
-    
+    };  
     
     appData.chooseIncome();
 
-    console.log(appData);
+    for (let key in appData) {
+        console.log('Наша программа включает в себя данные: ' + key + ': ' + appData[key]);
+    }
 }
 main();
 
