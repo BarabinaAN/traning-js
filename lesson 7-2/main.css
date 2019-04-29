@@ -1,0 +1,8 @@
+body {
+    height: 100vh;
+}
+.time {
+    padding-top: 10%;
+    font-size: 60px;
+    text-align: center;
+}
