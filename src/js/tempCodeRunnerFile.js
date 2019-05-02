@@ -1,16 +1,29 @@
-let arr = [
-    456,
-    7864,
-    2348,
-    3649,
-    7913456,
-    45087,
-    3059
-];
+'use strict';
 
-for ( let i = 0; i < arr.length; i++ ) {
-        let compareValue = String(arr[i]);
-        if (compareValue[0] == '3' || compareValue[0] == '7') {
-          console.log( compareValue );  
-        }
+let str = 'урок-3-был слишком легким',
+    reg_1 = /-/g,
+    reg_2 = /им/gi;
+
+let arr = [20, 33, 1, 'Человек', 2, 3];
+
+str = str[0].toUpperCase() + str.slice(1);
+console.log(str);
+
+str = str.replace(reg_1, ' ');
+console.log(str);
+
+str = str.slice(-6).replace(reg_2, 'о');
+console.log(str);
+
+let sum = 0;
+
+
+for (let i = 0; i < arr.length; i++) {
+    if ( typeof(arr[i]) === 'number' ) {
+        sum += arr[i]**3;
+    }
 }
+let sq = Math.sqrt(sum);
+console.log(sum);
+console.log(sq);
+
