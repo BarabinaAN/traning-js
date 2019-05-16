@@ -261,30 +261,41 @@ window.addEventListener('DOMContentLoaded', function(){
         totalValue = document.getElementById('total'),
         personsSum = 0,
         daysSum = 0,
-        total = 0;
+        total = 0,
+        reg = /\D/g;
 
         totalValue.textContent = 0;
 
-        persons.addEventListener('input', function() {
-            personsSum = +this.value;
+        function updateTotal() {
             total = (daysSum * personsSum)*4500;
-
             if (restDays.value == '') {
-                totalValue.textContent = 0;
-            } else {
+                total = 0;
+            }
+            if (persons.value == '') {
+                total = 0;
+            }
+            if (total > 0) {
                 totalValue.textContent = total;
             }
+        }
+
+        function checkCalcValue(el) {
+            el.setAttribute('type', 'text');
+            if (reg.test(el.value)) {
+                el.value = el.value.replace(reg, '');
+            }
+        }    
+
+        persons.addEventListener('input', function() {
+            checkCalcValue(this);
+            personsSum = +this.value;
+            updateTotal(restDays);
         });
 
         restDays.addEventListener('input', function() {
+            checkCalcValue(this);
             daysSum = +this.value;
-            total = (daysSum * personsSum)*4500;
-
-            if (persons.value == '') {
-                totalValue.textContent = 0;
-            } else {
-                totalValue.textContent = total;
-            }
+            updateTotal(persons);
         });
 
         place.addEventListener('change', function() {
@@ -294,31 +305,5 @@ window.addEventListener('DOMContentLoaded', function(){
                 let a = total;
                 totalValue.textContent = a * this.options[this.selectedIndex].value;
             }
-        });
-
-        
+        });      
 });
-
-// 1) Реализовать слайдер и калькулятор на сайте
-
-// 2) Проверить, чтобы все работало и не было ошибок в консоли
-
-// 3) Исправить баги в логике калькулятора:
-
-// Запретить введение дробных чисел
-// Запретить введение знаков “+” и “е”
-// Если заполнить оба поля, а потом очистить одно из них - общая сумма всё равно рассчитывается.
-// 4) Добавить папку с уроком на GitHub
-
-// ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ:
-// 1) Написать свою анимацию переключения слайдов
-
-// ·        Вдохновение можно взять тут – КЛИК
-
-// 2) Написать эффект изменения общей стоимости на чистом JS - перебор цифр
-
-// ·        Пример как должно выглядеть – КЛИК
-
-// 3) Проверить, чтобы все работало и не было ошибок в консоли
-
-// 4) Добавить папку с уроком на GitHub
