@@ -6,12 +6,14 @@ function calc() {
         personsSum = 0,
         daysSum = 0,
         total = 0,
-        reg = /\D/g;
+        reg = /\D/g,
+        optionIndex = 1;
 
     totalValue.textContent = 0;
 
     function updateTotal() {
-        total = (daysSum * personsSum)*4500;
+        optionIndex = place.options[place.selectedIndex].value;
+        total = (daysSum * personsSum)*4500*optionIndex;
         if (restDays.value == '') {
             total = 0;
         }
@@ -43,13 +45,18 @@ function calc() {
     });
 
     place.addEventListener('change', function() {
+        
         if (restDays.value == '' || persons.value == '') {
             totalValue.textContent = 0;
         } else {
-            let a = total;
-            totalValue.textContent = a * this.options[this.selectedIndex].value;
+            let a = total,
+                b = this.options[this.selectedIndex].value / optionIndex;
+
+            total = a * b;
+            totalValue.textContent = total.toFixed();
+            optionIndex = this.options[this.selectedIndex].value;
         }
-    });  
+    }); 
 }
 
 module.exports = calc;
