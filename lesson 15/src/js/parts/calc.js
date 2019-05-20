@@ -20,7 +20,9 @@ function calc() {
         if (persons.value == '') {
             total = 0;
         }
-        if (total > 0) {
+        if (total == 0) {
+            totalValue.textContent = 0;
+        } else {
             totalValue.textContent = total;
         }
     }
